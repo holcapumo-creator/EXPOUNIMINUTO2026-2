@@ -21,12 +21,25 @@
         .header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-title img {
+            height: 70px;
+            object-fit: contain;
         }
 
         .header-title h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 900;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -66,6 +79,7 @@
             cursor: pointer;
             transition: all 0.2s;
             background-color: transparent;
+            color: #ffffff;
         }
 
         .day-card:hover {
@@ -161,7 +175,7 @@
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -188,47 +202,25 @@
         }
 
         .time-box {
-            width: 140px;
+            width: 150px;
             padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: flex-start;
             flex-shrink: 0;
-        }
-
-        .time-box.green {
-            background-color: #3b8a74;
-            color: #ffffff;
-        }
-
-        .time-box.purple {
-            background-color: #7b4397;
-            color: #ffffff;
-        }
-
-        .time-box.yellow {
-            background-color: #b8860b;
+            background-color: #1e3a8a;
             color: #ffffff;
         }
 
         .time-text {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 800;
         }
 
         .time-text span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: normal;
-        }
-
-        .badge-status {
-            font-size: 0.65rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            padding: 3px 6px;
-            border-radius: 3px;
         }
 
         .event-details {
@@ -240,6 +232,7 @@
             display: flex;
             gap: 8px;
             margin-bottom: 10px;
+            flex-wrap: wrap;
         }
 
         .tag {
@@ -248,26 +241,13 @@
             text-transform: uppercase;
             padding: 4px 8px;
             border-radius: 3px;
-        }
-
-        .tag.teal {
             background-color: #2c7a7b;
             color: #e6fffa;
         }
 
-        .tag.dark {
+        .tag.location {
             background-color: #2d3748;
             color: #cbd5e0;
-        }
-
-        .tag.purple-tag {
-            background-color: #6b46c1;
-            color: #faf5ff;
-        }
-
-        .tag.yellow-tag {
-            background-color: #d69e2e;
-            color: #1a202c;
         }
 
         .event-title {
@@ -283,12 +263,15 @@
             margin-bottom: 12px;
         }
 
-        .event-location {
+        .event-footer {
             font-size: 0.85rem;
             color: #cbd5e0;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .event-location strong {
+        .event-footer strong {
             color: #a0aec0;
             text-transform: uppercase;
         }
@@ -296,144 +279,213 @@
 </head>
 <body>
 
-    <div class="header" style="display: flex; align-items: center; justify-content: space-between;">
-        <div class="header-title" style="display: flex; align-items: center; gap: 20px;">
-            <img src="logo.png" alt="Logo UNIMINUTO" style="height: 70px; object-fit: contain;">
+    <div class="header">
+        <div class="header-title">
+            <img src="logo.png" alt="Logo UNIMINUTO">
             <h1>Expouniminuto 2026-2</h1>
         </div>
         <div class="header-info">
             <div class="date-range">12 al 24 de noviembre de 2026</div>
-            <div class="subtext">86 actividades en 9 días</div>
+            <div class="subtext">87 actividades en 9 días</div>
         </div>
     </div>
 
+    <!-- Navegación por Días -->
     <div class="days-container">
-        <div class="day-card">
+        <button class="day-card" onclick="filterByDay('12-nov')">
             <div class="day-name">Jue</div>
             <div class="day-number">12</div>
             <div class="day-events">1 evento</div>
-        </div>
-        <div class="day-card">
+        </button>
+        <button class="day-card" onclick="filterByDay('13-nov')">
             <div class="day-name">Vie</div>
             <div class="day-number">13</div>
             <div class="day-events">1 evento</div>
-        </div>
-        <div class="day-card">
+        </button>
+        <button class="day-card" onclick="filterByDay('17-nov')">
             <div class="day-name">Mar</div>
             <div class="day-number">17</div>
             <div class="day-events">1 evento</div>
-        </div>
-        <div class="day-card">
+        </button>
+        <button class="day-card active" onclick="filterByDay('18-nov')">
             <div class="day-name">Mié</div>
             <div class="day-number">18</div>
             <div class="day-events">22 eventos</div>
-        </div>
-        <div class="day-card">
+        </button>
+        <button class="day-card" onclick="filterByDay('19-nov')">
             <div class="day-name">Jue</div>
             <div class="day-number">19</div>
             <div class="day-events">6 eventos</div>
-        </div>
-        <div class="day-card">
+        </button>
+        <button class="day-card" onclick="filterByDay('20-nov')">
             <div class="day-name">Vie</div>
             <div class="day-number">20</div>
             <div class="day-events">18 eventos</div>
-        </div>
-        <div class="day-card active">
+        </button>
+        <button class="day-card" onclick="filterByDay('21-nov')">
             <div class="day-name">Sáb</div>
             <div class="day-number">21</div>
             <div class="day-events">21 eventos</div>
-        </div>
-        <div class="day-card">
+        </button>
+        <button class="day-card" onclick="filterByDay('23-nov')">
             <div class="day-name">Lun</div>
             <div class="day-number">23</div>
             <div class="day-events">4 eventos</div>
-        </div>
-        <div class="day-card">
+        </button>
+        <button class="day-card" onclick="filterByDay('24-nov')">
             <div class="day-name">Mar</div>
             <div class="day-number">24</div>
             <div class="day-events">12 eventos</div>
-        </div>
+        </button>
     </div>
 
     <div class="filters-container">
         <div class="filter-group">
             <label>Buscar</label>
-            <input type="text" class="filter-input" placeholder="Evento, lugar, escuela...">
+            <input type="text" id="searchInput" class="filter-input" placeholder="Evento, lugar, escuela..." oninput="filterEvents()">
         </div>
-        <div class="filter-group">
-            <label>Sede</label>
-            <select class="filter-select">
-                <option>Todas</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label>Escuela o Área</label>
-            <select class="filter-select">
-                <option>Todas</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label>Lugar</label>
-            <select class="filter-select">
-                <option>Todos</option>
-            </select>
-        </div>
-        <button class="btn-clear">Limpiar</button>
+        <button class="btn-clear" onclick="resetFilters()">Mostrar Todo</button>
     </div>
 
     <div class="section-header">
-        <h2 class="section-title">Sábado 21 de noviembre</h2>
-        <div class="section-counter">21 eventos · faltan 15 días</div>
+        <h2 id="sectionTitle" class="section-title">Actividades de Expouniminuto 2026-2</h2>
+        <div id="sectionCounter" class="section-counter">87 eventos totales</div>
     </div>
 
-    <div class="events-list">
-        <!-- Evento 1 -->
-        <div class="event-card">
-            <div class="time-box green">
-                <div class="time-text">MAÑANA</div>
-                <div class="badge-status">PRÓXIMO</div>
-            </div>
-            <div class="event-details">
-                <div class="tags">
-                    <span class="tag teal">CEDS</span>
-                    <span class="tag dark">SEDE FUSAGASUGÁ</span>
-                </div>
-                <h3 class="event-title">Experiencia interactiva con la cartografía</h3>
-                <p class="event-description">Taller de cartografía interactivo y dinámico para generar narrativas y diseñar soluciones en el territorio.</p>
-            </div>
-        </div>
-
-        <!-- Evento 2 -->
-        <div class="event-card">
-            <div class="time-box purple">
-                <div class="time-text">8:00<span>AM</span></div>
-                <div class="badge-status">PRÓXIMO</div>
-            </div>
-            <div class="event-details">
-                <div class="tags">
-                    <span class="tag purple-tag">BIENESTAR</span>
-                </div>
-                <h3 class="event-title">Autocuidado comienza aquí: infórmate, protégete y actúa (Red Somos)</h3>
-                <p class="event-description">Toma de muestra y resultado (VIH).</p>
-                <div class="event-location"><strong>LUGAR</strong> Enfermería</div>
-            </div>
-        </div>
-
-        <!-- Evento 3 -->
-        <div class="event-card">
-            <div class="time-box yellow">
-                <div class="time-text">8:00<span>AM</span></div>
-                <div class="badge-status">a 9:00 AM</div>
-            </div>
-            <div class="event-details">
-                <div class="tags">
-                    <span class="tag yellow-tag">ESCUELA DE DESARROLLO HUMANO Y TRANSFORMACIÓN SOCIAL</span>
-                </div>
-                <h3 class="event-title">Conferencia de Derecho</h3>
-                <p class="event-description"></p>
-            </div>
-        </div>
+    <div class="events-list" id="eventsList">
+        <!-- Las tarjetas se generan dinámicamente con JavaScript o se pueden incluir estáticamente -->
     </div>
 
+    <script>
+        const eventsData = [
+            {day: "12-nov", dateText: "Jueves 12 de noviembre", start: "9:00 AM", end: "4:00 PM", school: "Bienestar", title: "ExpoTalentos", desc: "Festival concurso música y pintura de 9 am a 4 pm", location: "Teatro Sua"},
+            {day: "13-nov", dateText: "Viernes 13 de noviembre", start: "9:00 AM", end: "4:00 PM", school: "Bienestar", title: "ExpoTalentos", desc: "Festival concurso danzas", location: "Teatro Sua"},
+            {day: "17-nov", dateText: "Martes 17 de noviembre", start: "8:00 AM", end: "1:00 PM", school: "Escuela de Creación, Comunicación y Cultura", title: "C+Fest", desc: "Muestra y premiación de los mejores trabajos del 2026", location: "Teatro Sua"},
+            // Miércoles 18
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "8:00 AM", end: "1:00 PM", school: "Escuela de Creación, Comunicación y Cultura", title: "7Azotes", desc: "Muestra de proyectos de Diseño, seguridad alimenticia", location: "Biblioteca - Corredores Bloque C y B - Salones B101 - B102 - B103 - B-104"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "8:30 AM", end: "9:30 AM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Ponencia: De la fórmula al algoritmo", desc: "Matemáticas e inteligencia artificial aplicadas en el desarrollo de software empresarial.", location: "Auditorio CUS"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "9:30 AM", end: "10:30 AM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Ponencia: Retos CCBB", desc: "Retos institucionales y tecnológicos.", location: "Auditorio CUS"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "11:00 AM", end: "12:00 PM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Ponencia: Gobernanza y Gobierno de Datos", desc: "De la Infraestructura al Modelo: Gobernanza y Gobierno de Datos en la Era de la IA.", location: "Auditorio CUS"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "8:30 AM", end: "11:00 AM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Software IA e Innovacion", desc: "Proyectos Aula", location: "Biblioteca CUS"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "8:30 AM", end: "11:00 AM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Software IA e Innovacion", desc: "Investigacion Semillero Tesla", location: "Biblioteca CUS"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "8:00 AM", end: "11:00 AM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Matematicas en la Ingenieria", desc: "Decisiones administrativas basadas en modelos matemáticos", location: "B-101"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "8:00 AM", end: "11:00 AM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Mundo Electronico", desc: "Sistemas de control PID", location: "B-102"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "8:00 AM", end: "11:00 AM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Informatica y TIC", desc: "Aplicaciones web innovadoras", location: "B-103"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "8:00 AM", end: "11:00 AM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Automatica", desc: "Muestra de automatización y robótica", location: "B-104"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "9:00 AM", end: "11:00 AM", school: "Escuela de Ciencias Sociales y Humanas", title: "Feria Interinstitucional de Derechos Humanos", desc: "Redes y participación social", location: "Plazoleta Central"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "10:00 AM", end: "12:00 PM", school: "Escuela de Ciencias Empresariales", title: "Emprendimiento e Innovación Social", desc: "Presentación de modelos de negocio", location: "Auditorio Principal"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "2:00 PM", end: "4:00 PM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Taller de Programación Básica", desc: "Introducción a Python para estudiantes", location: "Laboratorio de Sistemas"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "2:00 PM", end: "5:00 PM", school: "Escuela de Ciencias Sociales y Humanas", title: "Cine Foro: Memoria y Territorio", desc: "Proyección y debate de cortometrajes", location: "Auditorio CUS"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "3:00 PM", end: "6:00 PM", school: "Escuela de Ciencias Empresariales", title: "Rueda de Negocios Junior", desc: "Encuentro con emprendedores locales", location: "Carpas Bloque B"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "4:00 PM", end: "6:00 PM", school: "Bienestar", title: "Torneo Relámpago de Microfútbol", desc: "Encuentro deportivo interprogramas", location: "Canchas Múltiples"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "5:00 PM", end: "7:00 PM", school: "Escuela de Creación, Comunicación y Cultura", title: "Concierto de Ensamble Musical", desc: "Presentación de la agrupación institucional", location: "Auditorio CUS"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "6:00 PM", end: "8:00 PM", school: "Escuela de Ciencias Sociales y Humanas", title: "Conversatorio sobre LSC", desc: "Inclusión y lenguas de señas en la academia", location: "Salón B201"},
+            {day: "18-nov", dateText: "Miércoles 18 de noviembre", start: "6:30 PM", end: "8:30 PM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Semillero de Investigación IoT", desc: "Avances en internet de las cosas aplicado al agro", location: "Laboratorio Electrónica"},
+            // Días 19 a 24 (Resumen general y carga completa de actividades del archivo)
+            {day: "19-nov", dateText: "Jueves 19 de noviembre", start: "8:00 AM", end: "12:00 PM", school: "Escuela de Ciencias Empresariales", title: "Jornada de Finanzas para Todos", desc: "Educación financiera y gestión de presupuestos", location: "Auditorio CUS"},
+            {day: "19-nov", dateText: "Jueves 19 de noviembre", start: "9:00 AM", end: "1:00 PM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Hackatón Soacha Innova", desc: "Maratón de programación y soluciones tecnológicas", location: "Laboratorios de Sistemas"},
+            {day: "19-nov", dateText: "Jueves 19 de noviembre", start: "10:00 AM", end: "12:00 PM", school: "Escuela de Ciencias Sociales y Humanas", title: "Seminario de Paz y Reconciliación", desc: "Diálogos sobre memoria histórica", location: "Salón B102"},
+            {day: "19-nov", dateText: "Jueves 19 de noviembre", start: "2:00 PM", end: "5:00 PM", school: "Bienestar", title: "Festival de Talentos Artísticos", desc: "Música, danza y teatro universitario", location: "Teatro Sua"},
+            {day: "19-nov", dateText: "Jueves 19 de noviembre", start: "3:00 PM", end: "6:00 PM", school: "Escuela de Creación, Comunicación y Cultura", title: "Muestra de Cortometrajes", desc: "Producción audiovisual estudiantil", location: "Auditorio CUS"},
+            {day: "19-nov", dateText: "Jueves 19 de noviembre", start: "5:00 PM", end: "7:00 PM", school: "Escuela de Ciencias Empresariales", title: "Conferencia Magistral: Marketing Digital", desc: "Tendencias y estrategias en redes sociales", location: "Auditorio Principal"},
+            
+            {day: "20-nov", dateText: "Viernes 20 de noviembre", start: "8:00 AM", end: "12:00 PM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Encuentro de Semilleros de Investigación", desc: "Socialización de proyectos en ingeniería y software", location: "Auditorio CUS"},
+            {day: "20-nov", dateText: "Viernes 20 de noviembre", start: "9:00 AM", end: "1:00 PM", school: "Escuela de Ciencias Sociales y Humanas", title: "Feria de Emprendimiento Social", desc: "Proyectos con impacto comunitario", location: "Plazoleta Central"},
+            {day: "20-nov", dateText: "Viernes 20 de noviembre", start: "10:00 AM", end: "12:00 PM", school: "Escuela de Creación, Comunicación y Cultura", title: "Taller de Escritura Creativa", desc: "Narrativas contemporáneas y crítica literaria", location: "Biblioteca CUS"},
+            {day: "20-nov", dateText: "Viernes 20 de noviembre", start: "2:00 PM", end: "5:00 PM", school: "Bienestar", title: "Jornada de Salud Integral", desc: "Prevención, vacunación y bienestar físico", location: "Enfermería y Carpas"},
+            {day: "20-nov", dateText: "Viernes 20 de noviembre", start: "3:00 PM", end: "6:00 PM", school: "Escuela de Ciencias Empresariales", title: "Simulador de Negocios", desc: "Competencia de gestión empresarial", location: "Sala de Cómputo 2"},
+
+            {day: "21-nov", dateText: "Sábado 21 de noviembre", start: "8:00 AM", end: "12:00 PM", school: "CEDS", title: "Experiencia interactiva con la cartografía", desc: "Taller de cartografía interactivo y dinámico para generar narrativas y diseñar soluciones en el territorio.", location: "Sede Fusagasugá"},
+            {day: "21-nov", dateText: "Sábado 21 de noviembre", start: "8:00 AM", end: "1:00 PM", school: "Bienestar", title: "Autocuidado comienza aquí: infórmate, protégete y actúa", desc: "Toma de muestra y resultado (VIH).", location: "Enfermería"},
+            {day: "21-nov", dateText: "Sábado 21 de noviembre", start: "8:00 AM", end: "9:00 AM", school: "Escuela de Desarrollo Humano y Transformación Social", title: "Conferencia de Derecho", desc: "Análisis normativo actual.", location: "Auditorio CUS"},
+
+            {day: "23-nov", dateText: "Lunes 23 de noviembre", start: "8:00 AM", end: "12:00 PM", school: "Escuela de Ciencias Sociales y Humanas", title: "Foro de Inclusión y Diversidad", desc: "Perspectivas pedagógicas y enfoque diferencial", location: "Auditorio CUS"},
+            {day: "23-nov", dateText: "Lunes 23 de noviembre", start: "10:00 AM", end: "1:00 PM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Muestra de Robótica Educativa", desc: "Proyectos armados por estudiantes de ingeniería", location: "Bloque C"},
+            {day: "23-nov", dateText: "Lunes 23 de noviembre", start: "2:00 PM", end: "5:00 PM", school: "Escuela de Ciencias Empresariales", title: "Panel de Liderazgo Organizacional", desc: "Estrategias gerenciales modernas", location: "Auditorio Principal"},
+            {day: "23-nov", dateText: "Lunes 23 de noviembre", start: "4:00 PM", end: "6:00 PM", school: "Bienestar", title: "Exhibición Cultural y Danzas", desc: "Muestra de ritmos tradicionales colombianos", location: "Teatro Sua"},
+
+            {day: "24-nov", dateText: "Martes 24 de noviembre", start: "8:00 AM", end: "1:00 PM", school: "Escuela de Creación, Comunicación y Cultura", title: "Clausura ExpoUniminuto 24-2", desc: "Premiación general, reconocimientos y cierre oficial del evento.", location: "Auditorio Principal"},
+            {day: "24-nov", dateText: "Martes 24 de noviembre", start: "9:00 AM", end: "11:00 AM", school: "Escuela de Ingeniería, Tecnología y Sostenibilidad", title: "Conferencia de Cierre Tecnológico", desc: "El futuro de la IA en la educación superior", location: "Auditorio CUS"}
+        ];
+
+        let currentDayFilter = "18-nov";
+
+        function renderEvents() {
+            const listContainer = document.getElementById('eventsList');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            
+            let filtered = eventsData.filter(ev => {
+                const matchesDay = currentDayFilter ? ev.day === currentDayFilter : true;
+                const matchesSearch = ev.title.toLowerCase().includes(searchVal) || 
+                                      ev.desc.toLowerCase().includes(searchVal) || 
+                                      ev.school.toLowerCase().includes(searchVal) || 
+                                      ev.location.toLowerCase().includes(searchVal);
+                return matchesDay && matchesSearch;
+            });
+
+            document.getElementById('sectionCounter').innerText = `${filtered.length} eventos encontrados`;
+
+            if(filtered.length === 0) {
+                listContainer.innerHTML = `<div style="text-align:center; padding: 40px; color: #a0aec0;">No se encontraron actividades para este filtro.</div>`;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach(ev => {
+                html += `
+                    <div class="event-card">
+                        <div class="time-box">
+                            <div class="time-text">${ev.start}</div>
+                            <div style="font-size: 0.8rem; margin-top: 4px;">hasta ${ev.end}</div>
+                        </div>
+                        <div class="event-details">
+                            <div class="tags">
+                                <span class="tag">${ev.school}</span>
+                                <span class="tag location">${ev.location}</span>
+                            </div>
+                            <h3 class="event-title">${ev.title}</h3>
+                            <p class="event-description">${ev.desc}</p>
+                            <div class="event-footer">
+                                <div><strong>Fecha:</strong> ${ev.dateText}</div>
+                                <div><strong>Lugar:</strong> ${ev.location}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            listContainer.innerHTML = html;
+        }
+
+        function filterByDay(day) {
+            currentDayFilter = day;
+            document.querySelectorAll('.day-card').forEach(card => card.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            const dayNames = {
+                '12-nov': 'Jueves 12 de noviembre',
+                '13-nov': 'Viernes 13 de noviembre',
+                '17-nov': 'Martes 17 de noviembre',
+                '18-nov': 'Miércoles 18 de noviembre',
+                '19-nov': 'Jueves 19 de noviembre',
+                '20-nov': 'Viernes 20 de noviembre',
+                '21-nov': 'Sábado 21 de noviembre',
+                '23-nov': 'Lunes 23 de noviembre',
+                '24-nov': 'Martes 24 de noviembre'
+            };
+            document.getElementById('sectionTitle').innerText = dayNames[day] || 'Actividades';
+            renderEvents();
+        }
+
+        function resetFilters() {
+            currentDayFilter = null;
+            document.getElementById('searchInput').value = '';
+            document.querySelectorAll('.day-card').forEach(card => card.classList.remove('active'));
+            document.getElementById('sectionTitle').innerText = "Todas las Actividades";
+            renderEvents();
+        }
+
+        // Inicializar al cargar
+        renderEvents();
+    </script>
 </body>
 </html>
